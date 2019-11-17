@@ -46,11 +46,11 @@ https://github.com/nir-takemi/UnityTweet/releases
 
 5. コード上で以下のように処理を書く
 ```Tweet
-ylib.Services.UnityTweet.Tweet(単につぶやく, "tag1", "tag2");
+ylib.Services.UnityTweet.Tweet("単につぶやく", "tag1", "tag2");
 
-ylib.Services.UnityTweet.TweetWithGameURL(GameURLと一緒につぶやく, "tag1", "tag2");
+ylib.Services.UnityTweet.TweetWithGameURL("GameURLと一緒につぶやく", "tag1", "tag2");
 
-ylib.Services.UnityTweet.TweetWithCaptureImage(キャプチャと一緒につぶやく, "tag1", "tag2");
+ylib.Services.UnityTweet.TweetWithCaptureImage("キャプチャと一緒につぶやく", "tag1", "tag2");
 ```
 
 6. 表示例
