@@ -42,7 +42,7 @@ https://github.com/nir-takemi/UnityTweet/releases
 ![image](https://user-images.githubusercontent.com/10418442/68995199-4315aa80-08ce-11ea-95a1-556a0e1a314d.png)
 
 4. prefab(ylib > UnityTweet > Resources > Prefabs > GO_TweetImgur)をtweetしたいscene上に置く
-![image](https://user-images.githubusercontent.com/10418442/68995245-d353ef80-08ce-11ea-818c-cac46db58eed.png)
+![image](https://user-images.githubusercontent.com/10418442/69003456-c9210800-0945-11ea-8233-643a4c4b2b52.png)
 
 5. コード上で以下のように処理を書く
 ```Tweet
