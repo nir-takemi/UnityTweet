@@ -72,7 +72,18 @@ namespace ylib.Services.Internal
         /// <param name="hashTags">ハッシュタグ(#なしで指定)</param>
         public void TweetWithCaptureImage(string text, params string[] hashTags)
         {
-            StartCoroutine(_TweetWithCaptureImage(text, hashTags));
+            StartCoroutine(_TweetWithCaptureImage(text, null, hashTags));
+        }
+
+        /// <summary>
+        /// 現状のゲーム画面のスクショとGameのURL(TweetSetting.assetで定義)込みでのtweet処理
+        /// </summary>
+        /// <param name="text">呟く内容</param>
+        /// <param name="actOnAfterCapture">キャプチャー後のアクション</param>
+        /// <param name="hashTags">ハッシュタグ(#なしで指定)</param>
+        public void TweetWithCaptureImageAndAfterCaptureAction(string text, System.Action actOnAfterCapture, params string[] hashTags)
+        {
+            StartCoroutine(_TweetWithCaptureImage(text, actOnAfterCapture, hashTags));
         }
 
         /// <summary>
@@ -125,7 +136,7 @@ namespace ylib.Services.Internal
         /// </summary>
         /// <param name="text">呟く内容</param>
         /// <param name="hashTags">ハッシュタグ(#なしで指定)</param>
-        private IEnumerator _TweetWithCaptureImage(string text, params string[] hashTags)
+        private IEnumerator _TweetWithCaptureImage(string text, System.Action actOnAfterCapture, params string[] hashTags)
         {
             // capture
             string filePath = CaptureScreen();
@@ -142,6 +153,11 @@ namespace ylib.Services.Internal
                 {
                     yield return null;
                 }
+            }
+
+            if (actOnAfterCapture != null)
+            {
+                actOnAfterCapture();
             }
 
             byte[] imageData = File.ReadAllBytes(filePath);

@@ -27,6 +27,11 @@ namespace ylib.Services
             tweetObj.IsTextBaseURL = false;
             tweetObj.TweetWithCaptureImage(text, hashTags);
         }
+        public static void TweetWithCaptureImageAndAfterCaptureAction(string text, System.Action actOnAfterCapture, params string[] hashTags)
+        {
+            tweetObj.IsTextBaseURL = false;
+            tweetObj.TweetWithCaptureImageAndAfterCaptureAction(text, actOnAfterCapture, hashTags);
+        }
         public static void TweetWithCaptureImageTextBaseURL(string text, params string[] hashTags)
         {
             tweetObj.IsTextBaseURL = true;
