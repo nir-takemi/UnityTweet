@@ -55,3 +55,15 @@ ylib.Services.UnityTweet.TweetWithCaptureImage("キャプチャと一緒につ�
 
 6. 表示例
 ![image](https://user-images.githubusercontent.com/10418442/68995359-43af4080-08d0-11ea-820a-1eebe53653c1.png)
+
+# その他
+## WebGL
+### Tweet時に「404 Not Found.」が表示される
+- 原因分かってないですが、OpenNewWindow.jslibのguidを変更することで解消できることを確認しています。
+お手数ですが、以下の手順をお試し願います。
+   - Assets/ylib/UnityTweet/Plugins/WebGL/OpenNewWindow.jslibを複製
+   - 複製元のファイルを削除
+   - 複製したファイルを `OpenNewWindow.jslib` にリネーム
+
+   3. Authorization callback URL:なんでも（使用しない）
+   3. Authorization callback URL:なんでも（使用しない）
