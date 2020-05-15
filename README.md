@@ -64,6 +64,3 @@ ylib.Services.UnityTweet.TweetWithCaptureImage("キャプチャと一緒につ�
    - Assets/ylib/UnityTweet/Plugins/WebGL/OpenNewWindow.jslibを複製
    - 複製元のファイルを削除
    - 複製したファイルを `OpenNewWindow.jslib` にリネーム
-
-   3. Authorization callback URL:なんでも（使用しない）
-   3. Authorization callback URL:なんでも（使用しない）
