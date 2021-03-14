@@ -38,7 +38,10 @@ namespace ylib.Services.Internal
                 uploadedURL = xDoc.Element("data").Element("link").Value;
 
                 // 画像リンクだとcard表示してくれないので、拡張子削った画像ページをURLとして扱ってあげる
-                uploadedURL = uploadedURL.Replace("." + cImageSuffix, "");
+                foreach (string suffix in cImageSuffixList)
+                {
+                    uploadedURL = uploadedURL.Replace("." + suffix, "");
+                }
             }
 
             afterUpload(uploadedURL);
