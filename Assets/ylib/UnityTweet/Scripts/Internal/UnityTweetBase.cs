@@ -18,6 +18,8 @@ namespace ylib.Services.Internal
 
         protected const string cImageSuffix = "png";
 
+        protected readonly string[] cImageSuffixList = new string[]{ cImageSuffix, "jpg", "gif" };
+
 #if !UNITY_EDITOR && UNITY_WEBGL
         // Plugins
         [DllImport("__Internal")] private static extern void OpenNewWindow(string URL);
