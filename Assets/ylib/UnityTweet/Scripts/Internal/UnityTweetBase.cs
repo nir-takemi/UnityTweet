@@ -89,25 +89,6 @@ namespace ylib.Services.Internal
         }
 
         /// <summary>
-        /// キャプチャ処理
-        /// </summary>
-        /// <returns>キャプチャイメージの保存パス</returns>
-        private string CaptureScreen()
-        {
-            string fileName = string.Format("{0:yyyyMMddHmmssFFFF}.{1}", DateTime.Now, cImageSuffix);
-            string filePath = Application.persistentDataPath + "/" + fileName;
-
-            // モバイルプラットフォームはファイル名指定で、勝手にpersistentDataPath配下となる
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            ScreenCapture.CaptureScreenshot(fileName);
-#else
-            ScreenCapture.CaptureScreenshot(filePath);
-#endif
-            // pathは同一になるはずなので、一律filePathを返してあげる
-            return filePath;
-        }
-
-        /// <summary>
         /// Tweet処理のメイン処理
         /// </summary>
         /// <param name="text">呟く内容</param>
@@ -140,30 +121,15 @@ namespace ylib.Services.Internal
         /// <param name="hashTags">ハッシュタグ(#なしで指定)</param>
         private IEnumerator _TweetWithCaptureImage(string text, System.Action actOnAfterCapture, params string[] hashTags)
         {
-            // capture
-            string filePath = CaptureScreen();
+            yield return new WaitForEndOfFrame();
 
-            // キャプチャー処理の待ち時間
-            float startTime = Time.time;
-            while (File.Exists(filePath) == false)
-            {
-                if (Time.time - startTime > cCaptureWaitTime)
-                {
-                    yield break;
-                }
-                else
-                {
-                    yield return null;
-                }
-            }
+            // capture
+            byte[] imageData = ScreenCapture.CaptureScreenshotAsTexture().EncodeToJPG();
 
             if (actOnAfterCapture != null)
             {
                 actOnAfterCapture();
             }
-
-            byte[] imageData = File.ReadAllBytes(filePath);
-            File.Delete(filePath);
 
             // upload
             string uploadedImgURL = "";
