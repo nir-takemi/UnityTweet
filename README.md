@@ -64,3 +64,9 @@ ylib.Services.UnityTweet.TweetWithCaptureImage("キャプチャと一緒につ�
    - Assets/ylib/UnityTweet/Plugins/WebGL/OpenNewWindow.jslibを複製
    - 複製元のファイルを削除
    - 複製したファイルを `OpenNewWindow.jslib` にリネーム
+ - 上記でも解決しない場合、Buildデータを上書き(Replace)せずに、前回のビルドデータを削除した上で保存してみてください
+
+### Twwet時に「429 Too Many Requests」が表示される
+- localhostでの実行ができないので、サーバにアップロードするなどして、テストをお試しください
+- 参考資料：[UnityでImgurで画像アップロードしようとしたらWebGLビルドだけ429エラーになった話](https://qiita.com/nir_takemi/items/de8eef97204d47fe78f6)
+

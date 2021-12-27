@@ -28,9 +28,14 @@ namespace ylib.Services.Internal
             www.SetRequestHeader("AUTHORIZATION", "Client-ID " + setting.ImgurClientId);
             yield return www.SendWebRequest();
 
-            if (www.isNetworkError)
-            {
+#if UNITY_2020_2_OR_NEWER
+            if (www.result != UnityWebRequest.Result.Success)
+#else
+            if (www.isNetworkError || www.isHttpError)
+#endif
+                {
                 Debug.LogError(www.error);
+                yield break;
             }
             else
             {
